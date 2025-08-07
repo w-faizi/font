@@ -31,14 +31,14 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
     <div id="app">
         <!-- Header -->
-        <header class="bg-white shadow-sm border-b border-gray-200">
+        <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div class="flex justify-between items-center">
-                    <h1 class="text-3xl font-bold text-gray-900">FontZen</h1>
-                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">FontZen</h1>
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                         <span id="moonIcon">🌙</span>
                         <span id="sunIcon" style="display: none;">☀️</span>
                     </button>
@@ -48,18 +48,18 @@
 
         <!-- Main Content -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <!-- Font Grid -->
-            <div id="fontGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Font Grid (3x3) -->
+            <div id="fontGrid" class="grid grid-cols-3 gap-6 mb-8">
                 <!-- Fonts will be loaded here -->
             </div>
 
             <!-- Pagination -->
             <div class="flex justify-center items-center gap-4">
-                <button id="prevBtn" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg transition-colors">
+                <button id="prevBtn" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg transition-colors">
                     Previous
                 </button>
-                <span id="pageInfo" class="text-gray-700 font-medium">Page 1 of 1</span>
-                <button id="nextBtn" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg transition-colors">
+                <span id="pageInfo" class="text-gray-700 dark:text-gray-300 font-medium">Page 1 of 1</span>
+                <button id="nextBtn" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg transition-colors">
                     Next
                 </button>
             </div>
@@ -67,61 +67,56 @@
 
         <!-- Font Details Modal -->
         <div id="fontModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="bg-white dark:bg-gray-800 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
-                        <h2 id="modalTitle" class="text-2xl font-bold text-gray-900">Font Name</h2>
-                        <button id="closeModal" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <h2 id="modalTitle" class="text-2xl font-bold text-gray-900 dark:text-white">Font Name</h2>
+                        <button id="closeModal" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-gray-500 dark:text-gray-400">
                             ✕
                         </button>
                     </div>
 
                     <!-- Font Preview -->
-                    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
-                        <div id="modalPreviewTitle" class="text-3xl text-gray-800 mb-2">Font Name</div>
-                        <div id="modalPreviewText" class="text-lg text-gray-600">The quick brown fox jumps over the lazy dog</div>
+                    <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                        <div id="modalPreviewTitle" class="text-3xl text-gray-800 dark:text-gray-200 mb-2">Font Name</div>
+                        <div id="modalPreviewText" class="text-lg text-gray-600 dark:text-gray-400">The quick brown fox jumps over the lazy dog</div>
                     </div>
 
                     <!-- Code Blocks -->
                     <div class="space-y-4">
                         <div class="mb-4">
                             <div class="flex justify-between items-center mb-2">
-                                <h4 class="text-sm font-semibold text-gray-700">HTML</h4>
+                                <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300">HTML</h4>
                                 <button onclick="copyCode('html')" class="flex items-center gap-1 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-md transition-colors">
                                     📋 Copy
                                 </button>
                             </div>
-                            <pre id="htmlCode" class="bg-gray-100 p-3 rounded-lg text-xs overflow-x-auto text-gray-800"></pre>
+                            <pre id="htmlCode" class="bg-gray-100 dark:bg-gray-900 p-3 rounded-lg text-xs overflow-x-auto text-gray-800 dark:text-gray-200"></pre>
                         </div>
 
                         <div class="mb-4">
                             <div class="flex justify-between items-center mb-2">
-                                <h4 class="text-sm font-semibold text-gray-700">CSS</h4>
+                                <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300">CSS</h4>
                                 <button onclick="copyCode('css')" class="flex items-center gap-1 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-md transition-colors">
                                     📋 Copy
                                 </button>
                             </div>
-                            <pre id="cssCode" class="bg-gray-100 p-3 rounded-lg text-xs overflow-x-auto text-gray-800"></pre>
+                            <pre id="cssCode" class="bg-gray-100 dark:bg-gray-900 p-3 rounded-lg text-xs overflow-x-auto text-gray-800 dark:text-gray-200"></pre>
                         </div>
 
                         <div class="mb-4">
                             <div class="flex justify-between items-center mb-2">
-                                <h4 class="text-sm font-semibold text-gray-700">TAILWIND</h4>
+                                <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300">TAILWIND</h4>
                                 <button onclick="copyCode('tailwind')" class="flex items-center gap-1 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-md transition-colors">
                                     📋 Copy
                                 </button>
                             </div>
-                            <pre id="tailwindCode" class="bg-gray-100 p-3 rounded-lg text-xs overflow-x-auto text-gray-800"></pre>
+                            <pre id="tailwindCode" class="bg-gray-100 dark:bg-gray-900 p-3 rounded-lg text-xs overflow-x-auto text-gray-800 dark:text-gray-200"></pre>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Buy Me a Coffee Button -->
-        <button id="coffeeBtn" class="fixed bottom-6 right-6 bg-yellow-500 hover:bg-yellow-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40">
-            ☕
-        </button>
     </div>
 
     <script>
@@ -179,7 +174,7 @@
         let currentPage = 1;
         let selectedFont = null;
         let darkMode = false;
-        const fontsPerPage = 9;
+        const fontsPerPage = 9; // 3x3 grid
         const totalPages = Math.ceil(ALL_FONTS.length / fontsPerPage);
         const loadedFonts = new Set();
 
@@ -199,10 +194,10 @@
             loadFont(fontName);
             
             const card = document.createElement('div');
-            card.className = 'font-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100';
+            card.className = 'font-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 dark:border-gray-700 hover:scale-105';
             card.innerHTML = `
-                <h3 class="text-lg font-semibold text-gray-800 mb-3 truncate">${fontName}</h3>
-                <div class="text-2xl text-gray-700 leading-relaxed" style="font-family: '${fontName}', sans-serif; min-height: 60px; display: flex; align-items: center;">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3 truncate">${fontName}</h3>
+                <div class="text-2xl text-gray-700 dark:text-gray-300 leading-relaxed" style="font-family: '${fontName}', sans-serif; min-height: 60px; display: flex; align-items: center;">
                     The quick brown fox jumps
                 </div>
             `;
@@ -254,7 +249,6 @@
             else if (type === 'tailwind') text = document.getElementById('tailwindCode').textContent;
             
             navigator.clipboard.writeText(text).then(() => {
-                // Could add a toast notification here
                 console.log('Copied to clipboard!');
             });
         }
@@ -264,16 +258,17 @@
             darkMode = !darkMode;
             if (darkMode) {
                 document.documentElement.classList.add('dark');
-                document.body.className = 'bg-gray-900 min-h-screen';
                 document.getElementById('moonIcon').style.display = 'none';
                 document.getElementById('sunIcon').style.display = 'inline';
             } else {
                 document.documentElement.classList.remove('dark');
-                document.body.className = 'bg-gray-50 min-h-screen';
                 document.getElementById('moonIcon').style.display = 'inline';
                 document.getElementById('sunIcon').style.display = 'none';
             }
             localStorage.setItem('fontzen-dark-mode', JSON.stringify(darkMode));
+            
+            // Refresh current page to apply dark mode to font cards
+            showCurrentPage();
         }
 
         // Initialize app
@@ -282,7 +277,11 @@
             const savedDarkMode = localStorage.getItem('fontzen-dark-mode');
             if (savedDarkMode !== null) {
                 darkMode = JSON.parse(savedDarkMode);
-                if (darkMode) toggleDarkMode();
+                if (darkMode) {
+                    document.documentElement.classList.add('dark');
+                    document.getElementById('moonIcon').style.display = 'none';
+                    document.getElementById('sunIcon').style.display = 'inline';
+                }
             }
 
             // Event listeners
@@ -301,9 +300,6 @@
             });
             document.getElementById('closeModal').addEventListener('click', () => {
                 document.getElementById('fontModal').classList.add('hidden');
-            });
-            document.getElementById('coffeeBtn').addEventListener('click', () => {
-                alert('Thanks for your support! ☕️');
             });
 
             // Close modal when clicking outside
